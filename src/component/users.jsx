@@ -5,8 +5,19 @@ const users = () => {
 
     const users=useLoaderData()
 
-    const handleDelete=id=>{
-        console.log(id);
+    const handleDelete=_id=>{
+        console.log(_id);
+        fetch(`http://localhost:5000/users/${_id}`,{
+            method:"DELETE"
+            
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if (data.deletedCount > 0) {
+                alert("deleted successfully")
+            }
+        })
     }
 
     return (
